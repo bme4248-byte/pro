@@ -33,6 +33,19 @@
             font-weight: bold;
             color: #059669;
         }
+        .btn-carrito {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        .btn-carrito:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .btn-carrito:disabled {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
     </style>
 @endpush
 
@@ -58,10 +71,16 @@
                     <i class="fas fa-table me-1"></i>
                     Lista de Productos
                 </div>
-                <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm">
-                    <i class="fas fa-plus me-1"></i>
-                    Nuevo Producto
-                </a>
+                <div>
+                    <a href="{{ route('carrito.index') }}" class="btn btn-success btn-sm me-2">
+                        <i class="fas fa-shopping-cart me-1"></i>
+                        Ver Carrito
+                    </a>
+                    <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus me-1"></i>
+                        Nuevo Producto
+                    </a>
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -120,6 +139,18 @@
                                 <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-warning btn-sm" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                
+                                <!-- BOTÓN AGREGAR AL CARRITO -->
+                                <form action="{{ route('carrito.store') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+                                    <input type="hidden" name="cantidad" value="1">
+                                    <button type="submit" class="btn btn-success btn-sm" title="Agregar al Carrito"
+                                            {{ $producto->stock == 0 || $producto->estado != 'activo' ? 'disabled' : '' }}>
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                </form>
+
                                 <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
