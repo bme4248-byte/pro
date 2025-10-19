@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanelController;
 
@@ -19,3 +20,6 @@ Route::get('/login', function() {
 
 // Rutas para categorías (CRUD completo)
 Route::resource('categorias', CategoriaController::class);
+
+// Rutas para productos
+Route::resource('productos', ProductoController::class);
