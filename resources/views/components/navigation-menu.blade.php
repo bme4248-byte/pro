@@ -64,6 +64,19 @@
                                         <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                                          Productos
                                 </a>
+                                <a class="nav-link" href="{{ route('pedidos.index') }}">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                                        Pedidos
+                                </a>
+                                <a class="nav-link" href="{{ route('detalle-pedidos.index') }}">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                                        Detalle Pedidos
+                                </a>
+                                
+                                <a class="nav-link" href="{{ route('pagos.index') }}">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                                        Pagos
+                                </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
